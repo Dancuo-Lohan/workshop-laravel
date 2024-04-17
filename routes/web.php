@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\ProjectManagerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/', function () {
+    return view('home');
+});
+
+
+Route::prefix('/developer')->name('developer.')->controller(DeveloperController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/new', 'create')->name('create');
+    Route::post('/new', 'store');
+    Route::get('/{developer:slug}/edit', 'edit')->name('edit');
+    Route::post('/{developer:slug}/edit', 'update');
+    Route::get('/{developer:slug}', 'show')->name('show');
+});
+
+
+Route::prefix('/administrator')->name('administrator.')->controller(AdministratorController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/new', 'create')->name('create');
+    Route::post('/new', 'store');
+    Route::get('/{administrator:slug}/edit', 'edit')->name('edit');
+    Route::post('/{administrator:slug}/edit', 'update');
+    Route::get('/{administrator:slug}', 'show')->name('show');
+});
+
+
+Route::prefix('/project-manager')->name('project-manager.')->controller(ProjectManagerController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/new', 'create')->name('create');
+    Route::post('/new', 'store');
+    Route::get('/{project-manager:slug}/edit', 'edit')->name('edit');
+    Route::post('/{project-manager:slug}/edit', 'update');
+    Route::get('/{project-manager:slug}', 'show')->name('show');
 });
