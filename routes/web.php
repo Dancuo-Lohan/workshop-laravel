@@ -33,11 +33,6 @@ Route::prefix('/developer')->name('developer.')->controller(DeveloperController:
 
 Route::prefix('/administrator')->name('administrator.')->controller(AdministratorController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::post('/new', 'store');
-    Route::get('/{administrator:slug}/edit', 'edit')->name('edit');
-    Route::post('/{administrator:slug}/edit', 'update');
-    Route::get('/{administrator:slug}', 'show')->name('show');
 });
 
 
