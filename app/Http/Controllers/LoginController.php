@@ -8,6 +8,24 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function index()
+    {
+        if (auth()->check()) {
+            if (auth()->user()->role->name === 'admin')
+                return redirect()->intended('/administrator');
+
+            if (auth()->user()->role->name === 'project-manager')
+                return redirect()->intended('/project-manager');
+
+            if (auth()->user()->role->name === 'developer')
+                return redirect()->intended('/developer');
+
+            return redirect()->intended('/');
+        }
+
+        return view('login');
+    }
+
     /**
      * Handle an authentication attempt.
      */
