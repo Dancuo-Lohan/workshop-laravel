@@ -20,11 +20,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/', function () {
-    return view('home');
-});
-
-
 Route::prefix('/developer')->name('developer.')->controller(DeveloperController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/new', 'create')->name('create');
