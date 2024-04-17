@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('status_tags', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('status_tags')) {
+            Schema::create('status_tags', function (Blueprint $table) {
+                $table->id();
+                $table->string('label');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
