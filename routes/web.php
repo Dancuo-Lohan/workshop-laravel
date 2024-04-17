@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectManagerController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/', function () {
+        return view('login');
+    })->name('home');
+
+    Route::post('/', 'authenticate')->name('login');
 });
 
-Route::prefix('/developer')->name('developer.')->controller(DeveloperController::class)->group(function () {
+Route::prefix('/developer')->middleware('role:developer')->name('developer.')->controller(DeveloperController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
@@ -28,7 +33,6 @@ Route::prefix('/developer')->name('developer.')->controller(DeveloperController:
     Route::post('/{developer:slug}/edit', 'update');
     Route::get('/{developer:slug}', 'show')->name('show');
 });
-
 
 Route::prefix('/administrator')->name('administrator.')->controller(AdministratorController::class)->group(function () {
     Route::get('/', 'index')->name('index');
