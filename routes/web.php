@@ -55,7 +55,7 @@ Route::prefix('/project')->name('project.')->controller(ProjectController::class
     Route::get('/', 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
-    Route::get('/{project-manager:slug}/edit', 'edit')->name('edit');
-    Route::post('/{project-manager:slug}/edit', 'update');
-    Route::get('/{project-manager:slug}', 'show')->name('show');
+    Route::get('/{project:slug}/edit', 'edit')->name('edit');
+    Route::post('/{project:slug}/edit', 'update');
+    Route::get('/{project:slug}', 'show')->name('show');
 });
