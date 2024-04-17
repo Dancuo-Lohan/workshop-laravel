@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="">Projects manager</a>
+                        <a class="nav-link text-white" href="{{ route('projectManager.index') }}">Projects manager</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ route('project.index') }}">Projects</a>
