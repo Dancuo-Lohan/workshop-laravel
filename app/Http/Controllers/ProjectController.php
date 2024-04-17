@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ProjectManagerController extends Controller
+class ProjectController extends Controller
 {
     public function index(): View
     {
-        return view('project-manager.index', [
+        return view('project.index', [
+            'projects' => Project::all()
         ]);
     }
 }
