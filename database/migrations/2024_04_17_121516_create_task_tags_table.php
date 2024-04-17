@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\TaskTag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,10 @@ return new class extends Migration
                 $table->timestamps();
             });
         }
+        
+        Schema::table('projects', function (Blueprint $table) {
+            $table->foreignIdFor(TaskTag::class)->nullable()->constrained()->cascadeOnDelete();
+        });
     }
 
     /**
@@ -25,6 +30,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('projects', function (Blueprint $table) {
+            $table->dropForeignIdFor(TaskTag::class);
+        });
         Schema::dropIfExists('task_tags');
     }
 };
