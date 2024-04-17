@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectManagerController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,16 @@ Route::prefix('/administrator')->name('administrator.')->controller(Administrato
 
 
 Route::prefix('/project-manager')->name('project-manager.')->controller(ProjectManagerController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/new', 'create')->name('create');
+    Route::post('/new', 'store');
+    Route::get('/{project-manager:slug}/edit', 'edit')->name('edit');
+    Route::post('/{project-manager:slug}/edit', 'update');
+    Route::get('/{project-manager:slug}', 'show')->name('show');
+});
+
+
+Route::prefix('/project')->name('project.')->controller(ProjectController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
