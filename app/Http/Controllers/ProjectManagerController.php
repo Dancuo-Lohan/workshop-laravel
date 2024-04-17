@@ -9,7 +9,6 @@ class ProjectManagerController extends Controller
 {
     public function index(): View
     {
-        return view('project-manager.index', [
-        ]);
+        return view('projectManager.index', []);
     }
 }
