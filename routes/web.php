@@ -18,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(LoginController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
-    Route::post('/', 'authenticate')->name('login');
+Route::get('/', function () {
+    return;
+})->middleware('logged');
+
+Route::controller(LoginController::class)->middleware('logged')->group(function () {
+    Route::get('/login', 'index')->name('home');
+    Route::post('/login', 'authenticate')->name('login');
 });
 
 
@@ -29,7 +33,7 @@ Route::controller(LoginController::class)->group(function () {
 // #####################################################
 // #####################################################
 // Routes de l'admin
-Route::prefix('/administrator')->name('administrator.')->controller(AdministratorController::class)->group(function () {
+Route::prefix('/administrator')->middleware('role:admin')->name('administrator.')->controller(AdministratorController::class)->group(function () {
     Route::get('/', 'index')->name('index');
 
     Route::prefix('/projectManager')->name('projectManager.')->controller(AdministratorController::class)->group(function () {
@@ -75,13 +79,13 @@ Route::prefix('/administrator')->name('administrator.')->controller(Administrato
 // #####################################################
 // #####################################################
 // Routes du chef de projet
-Route::prefix('/project-manager')->name('project-manager.')->controller(ProjectManagerController::class)->group(function () {
+Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectManagerController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
-    Route::get('/{project-manager:slug}/edit', 'edit')->name('edit');
-    Route::post('/{project-manager:slug}/edit', 'update');
-    Route::get('/{project-manager:slug}', 'show')->name('show');
+    Route::get('/{projectManager:slug}/edit', 'edit')->name('edit');
+    Route::post('/{projectManager:slug}/edit', 'update');
+    Route::get('/{projectManager:slug}', 'show')->name('show');
 });
 
 
@@ -98,6 +102,7 @@ Route::prefix('/developer')->middleware('role:developer')->name('developer.')->c
     Route::post('/{developer:slug}/edit', 'update');
     Route::get('/{developer:slug}', 'show')->name('show');
 });
+
 
 
 Route::prefix('/project')->name('project.')->controller(ProjectController::class)->group(function () {
