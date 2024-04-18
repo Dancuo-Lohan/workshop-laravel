@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\CreateTaskRequest;
 use App\Models\Project;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,7 +13,6 @@ use Illuminate\View\View;
 
 class AdministratorController extends Controller
 {
- 
     public function index(): View
     {
         return view('administrator.index', []);
@@ -40,7 +41,7 @@ class AdministratorController extends Controller
             'projects' => Project::all()
         ]);
     }
-    
+
     public function showProject(Project $project): RedirectResponse | View
     {
         return view('administrator.project.show', [
@@ -85,7 +86,7 @@ class AdministratorController extends Controller
     {
         return view('administrator.projectManager.index', []);
     }
- 
+
 
 
     // ####################################
@@ -105,6 +106,42 @@ class AdministratorController extends Controller
     //  Task
     public function task(): View
     {
-        return view('administrator.task.index', []);
+        return view('administrator.task.index', [
+            'tasks' => Task::all()
+        ]);
+    }
+
+    public function showTask(Task $task): RedirectResponse | View
+    {
+        return view('administrator.task.show', [
+            'task' => $task
+        ]);
+    }
+
+    public function createTask()
+    {
+        $task = new Project();
+        return view('administrator.task.create', [
+            'task' => $task
+        ]);
+    }
+
+    public function storeTask(CreateProjectRequest $request)
+    {
+        $task = Task::create($request->validated());
+        return redirect()->route('administrator.task.index')->with('success', "The task has been successfully saved!");
+    }
+
+    public function editTask(Task $task)
+    {
+        return view('administrator.task.edit', [
+            'task' => $task
+        ]);
+    }
+
+    public function updateTask(Task $task, CreateTaskRequest $request)
+    {
+        $task->update($request->validated());
+        return redirect()->route('administrator.task.index')->with('success', "The task has been successfully modified!");
     }
 }
