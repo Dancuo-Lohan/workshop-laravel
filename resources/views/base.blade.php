@@ -49,11 +49,10 @@
                 {{ session('success') }}
             </div>
         @endif
-
-        <div class="container" style="padding:2rem 1rem">
-            @yield('content')
-        </div>
     @endif
+    <div class="container" style="padding:2rem 1rem">
+        @yield('content')
+    </div>
 </body>
 
 </html>
