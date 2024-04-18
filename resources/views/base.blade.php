@@ -12,37 +12,47 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('projectManager.index') }}">Projects manager</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('project.index') }}">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ route('developer.index') }}">Developers</a>
-                    </li>
-                </ul>
+    <!-- Login navbar -->
+    @if (!auth()->check())
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#">Project Management Dashboard</a>
             </div>
-        </div>
-    </nav>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+        </nav>
     @endif
 
-    <div class="container" style="padding:2rem 1rem">
-        @yield('content')
-    </div>
+    @if (auth()->check())
+        <!-- Admin navbar -->
+        @if (auth()->user()->role->name === 'admin')
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('projectManager.index') }}">Projects
+                                    manager</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('project.index') }}">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('developer.index') }}">Developers</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <div class="container" style="padding:2rem 1rem">
+            @yield('content')
+        </div>
 
 </body>
 
