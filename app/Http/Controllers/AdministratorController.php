@@ -6,6 +6,7 @@ use App\Http\Requests\CreateDeveloperRequest;
 use App\Http\Requests\CreateProjectManagerRequest;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\CreateTaskRequest;
+use App\Models\Client;
 use App\Models\Project;
 use App\Models\Role;
 use App\Models\Task;
@@ -86,7 +87,7 @@ class AdministratorController extends Controller
     public function project(): View
     {
         return view('administrator.project.index', [
-            'projects' => Project::all()
+            'projects' => Project::with('projectManagers')->get()
         ]);
     }
 
@@ -101,26 +102,34 @@ class AdministratorController extends Controller
     {
         $project = new Project();
         return view('administrator.project.create', [
-            'project' => $project
+            'project' => $project,
+            'clients' => Client::all(),
+            'projectManagers' => User::where('role_id', Role::where('name', 'project-manager')->first()->id)->get()
         ]);
     }
 
     public function storeProject(CreateProjectRequest $request)
     {
         $project = Project::create($request->validated());
+        $project->projectManagers()->sync($request->validated('projectManagers'));
+
         return redirect()->route('administrator.project.index')->with('success', "The project has been successfully saved!");
     }
 
     public function editProject(Project $project)
     {
         return view('administrator.project.edit', [
-            'project' => $project
+            'project' => $project,
+            'clients' => Client::all(),
+            'projectManagers' => User::where('role_id', Role::where('name', 'project-manager')->first()->id)->get()
         ]);
     }
 
     public function updateProject(Project $project, CreateProjectRequest $request)
     {
         $project->update($request->validated());
+        $project->projectManagers()->sync($request->validated('projectManagers'));
+
         return redirect()->route('administrator.project.index')->with('success', "The project has been successfully modified!");
     }
 
