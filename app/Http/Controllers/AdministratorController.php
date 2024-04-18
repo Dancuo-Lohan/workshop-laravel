@@ -142,6 +142,21 @@ class AdministratorController extends Controller
         return redirect()->route('administrator.projectManager.index')->with('success', "The project manager has been successfully saved!");
     }
 
+    public function editProjectManager(User $projectManager)
+    {
+        return view('administrator.projectManager.edit', [
+            'projectManager' => $projectManager,
+            'tasks' => Task::select('id', 'name')->get(),
+            'projects' => Project::select('id', 'name')->get()
+        ]);
+    }
+
+    public function updateProjectManager(Project $project, CreateProjectRequest $request)
+    {
+        $project->update($request->validated());
+        return redirect()->route('administrator.projectManager.index')->with('success', "The project has been successfully modified!");
+    }
+
 
 
     // ####################################
