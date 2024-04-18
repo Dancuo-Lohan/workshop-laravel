@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateDeveloperRequest;
+use App\Http\Requests\CreateProjectManagerRequest;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\CreateTaskRequest;
 use App\Models\Project;
@@ -106,7 +107,39 @@ class AdministratorController extends Controller
     //  ProjectManager
     public function projectManager(): View
     {
-        return view('administrator.projectManager.index', []);
+        return view('administrator.projectManager.index', [
+            'projectManagers' => User::where('role_id', Role::where('name', 'project-manager')->first()->id)->get()
+        ]);
+    }
+
+    public function showProjectManager(User $projectManager): RedirectResponse | View
+    {
+        return view('administrator.projectManager.show', [
+            'projectManager' => $projectManager
+        ]);
+    }
+
+    public function createProjectManager()
+    {
+        $projectManager = new User();
+        return view('administrator.projectManager.create', [
+            'projectManager' => $projectManager,
+            'tasks' => Task::select('id', 'name')->get(),
+            'projects' => Project::select('id', 'name')->get()
+        ]);
+    }
+
+    public function storeProjectManager(CreateProjectManagerRequest $request)
+    {
+        $projectManager = User::create([
+            ...$request->validated(),
+            'password' => bcrypt('testtest'),
+            'role_id' => Role::where('name', 'project-manager')->first()->id
+        ]);
+        $projectManager->tasks()->sync($request->validated('tasks'));
+        $projectManager->projects()->sync($request->validated('projects'));
+
+        return redirect()->route('administrator.projectManager.index')->with('success', "The project manager has been successfully saved!");
     }
 
 

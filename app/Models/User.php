@@ -24,6 +24,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Task::class);
     }
 
+
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
