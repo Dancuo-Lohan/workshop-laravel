@@ -28,7 +28,9 @@ class AdministratorController extends Controller
     //  Developer
     public function developer(): View
     {
-        return view('administrator.developer.index', []);
+        return view('administrator.developer.index', [
+            'developers' => User::where('role_id', Role::where('name', 'developer')->first()->id)->get()
+        ]);
     }
 
     public function createDeveloper(): View
@@ -49,7 +51,30 @@ class AdministratorController extends Controller
         ]);
         $developer->tasks()->sync($request->validated('tasks'));
 
-        return redirect()->route('administrator.project.index')->with('success', "The developer has been successfully saved!");
+        return redirect()->route('administrator.developer.index')->with('success', "The developer has been successfully saved!");
+    }
+
+    public function editDeveloper(User $developer)
+    {
+        return view('administrator.developer.edit', [
+            'developer' => $developer,
+            'tasks' => Task::select('id', 'name')->get()
+        ]);
+    }
+
+    public function updateDeveloper(User $developer, CreateDeveloperRequest $request)
+    {
+        $developer->update($request->validated());
+        $developer->tasks()->sync($request->validated('tasks'));
+
+        return redirect()->route('administrator.developer.index')->with('success', "The developer has been successfully modified!");
+    }
+
+    public function showDeveloper(User $developer): RedirectResponse | View
+    {
+        return view('administrator.developer.show', [
+            'developer' => $developer
+        ]);
     }
 
 

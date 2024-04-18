@@ -20,18 +20,25 @@
             </tr>
         </thead>
         <tbody>
-
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="" class="btn btn-primary">Voir plus</a>
-                    <a href="" class="btn btn-warning">Modifier</a>
-                </td>
-            </tr>
-
+            @foreach ($developers as $developer)
+                <tr>
+                    <td>{{ $developer->firstName }}</td>
+                    <td>{{ $developer->name }}</td>
+                    <td>{{ $developer->job }}</td>
+                    <td>
+                        @foreach ($developer->tasks as $task)
+                            <a href="{{ route('administrator.task.show', ['task' => $task]) }}"
+                                class="badge bg-primary">{{ $task->name }}</a>
+                        @endforeach
+                    </td>
+                    <td>
+                        <a href="{{ route('administrator.developer.show', ['developer' => $developer->id]) }}"
+                            class="btn btn-primary">Voir plus</a>
+                        <a href="{{ route('administrator.developer.edit', ['developer' => $developer->id]) }}"
+                            class="btn btn-warning">Modifier</a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection
