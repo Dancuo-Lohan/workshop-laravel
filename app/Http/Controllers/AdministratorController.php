@@ -176,9 +176,12 @@ class AdministratorController extends Controller
         ]);
     }
 
-    public function updateProjectManager(Project $project, CreateProjectRequest $request)
+    public function updateProjectManager(User $projectManager, CreateProjectManagerRequest $request)
     {
-        $project->update($request->validated());
+        $projectManager->update($request->validated());
+        $projectManager->tasks()->sync($request->validated('tasks'));
+        $projectManager->projects()->sync($request->validated('projects'));
+
         return redirect()->route('administrator.projectManager.index')->with('success', "The project has been successfully modified!");
     }
 
