@@ -59,9 +59,9 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
         Route::get('/', 'developer')->name('index');
         Route::get('/new', 'createDeveloper')->name('create');
         Route::post('/new', 'storeDeveloper');
-        Route::get('/{developer:slug}/edit', 'editDeveloper')->name('edit');
-        Route::post('/{developer:slug}/edit', 'updateDeveloper');
-        Route::get('/{developer:slug}', 'showDeveloper')->name('show');
+        Route::get('/{developer:id}/edit', 'editDeveloper')->name('edit');
+        Route::post('/{developer:id}/edit', 'updateDeveloper');
+        Route::get('/{developer:id}', 'showDeveloper')->name('show');
     });
 
     Route::prefix('/project')->name('project.')->controller(AdministratorController::class)->group(function () {
