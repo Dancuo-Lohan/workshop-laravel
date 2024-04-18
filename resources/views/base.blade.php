@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="{{ route('logout') }}">Déconnexion</a>
+                    <a href="{{ route('logout') }}" class="btn btn-light">Déconnexion</a>
                 </div>
             </nav>
         @endif
