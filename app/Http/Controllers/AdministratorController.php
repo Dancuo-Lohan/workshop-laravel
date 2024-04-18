@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateClientRequest;
 use App\Http\Requests\CreateDeveloperRequest;
 use App\Http\Requests\CreateProjectManagerRequest;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\CreateTaskRequest;
+use App\Models\Client;
 use App\Models\Project;
 use App\Models\Role;
 use App\Models\Task;
@@ -193,7 +195,25 @@ class AdministratorController extends Controller
     //  Client
     public function client(): View
     {
-        return view('administrator.client.index', []);
+        return view('administrator.client.index', [
+            'clients' => Client::all()
+        ]);
+    }
+
+    public function createClient()
+    {
+        $client = new Client();
+        return view('administrator.client.create', [
+            'client' => $client,
+            'project' => Project::select('id', 'name')->get()
+        ]);
+    }
+
+    public function storeClient(CreateClientRequest $request)
+    {
+        
+        $client = Client::create($request->validated());
+        return redirect()->route('administrator.client.index')->with('success', "The client has been successfully saved!");
     }
 
 
