@@ -53,7 +53,7 @@
         <div class="container" style="padding:2rem 1rem">
             @yield('content')
         </div>
-
+    @endif
 </body>
 
 </html>
