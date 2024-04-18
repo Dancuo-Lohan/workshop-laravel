@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\CreateTaskRequest;
 use App\Models\Project;
+use App\Models\StatusTag;
 use App\Models\Task;
+use App\Models\TaskTag;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -107,7 +109,7 @@ class AdministratorController extends Controller
     public function task(): View
     {
         return view('administrator.task.index', [
-            'tasks' => Task::all()
+            'tasks' => Task::orderBy('id', 'desc')->paginate(10)
         ]);
     }
 
@@ -120,13 +122,15 @@ class AdministratorController extends Controller
 
     public function createTask()
     {
-        $task = new Project();
+        $task = new Task();
         return view('administrator.task.create', [
-            'task' => $task
+            'task' => $task,
+            'status_tags' => StatusTag::select('id', 'label')->get(),
+            'task_tags' => TaskTag::select('id', 'label')->get()
         ]);
     }
 
-    public function storeTask(CreateProjectRequest $request)
+    public function storeTask(CreateTaskRequest $request)
     {
         $task = Task::create($request->validated());
         return redirect()->route('administrator.task.index')->with('success', "The task has been successfully saved!");
@@ -135,7 +139,9 @@ class AdministratorController extends Controller
     public function editTask(Task $task)
     {
         return view('administrator.task.edit', [
-            'task' => $task
+            'task' => $task,
+            'status_tags' => StatusTag::select('id', 'label')->get(),
+            'task_tags' => TaskTag::select('id', 'label')->get()
         ]);
     }
 

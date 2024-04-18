@@ -7,6 +7,11 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">{{ $task->name }}</h5>
+                @if ($task->tags)
+                    <span class="badge bg-dark">{{ $task->tag->label }}</span>
+                @else
+                    <span class="badge bg-secondary">Aucune catégorie</span>
+                @endif
             </div>
             <div class="card-body">
                 <p class="card-text">{!! $task->description !!}</p>
