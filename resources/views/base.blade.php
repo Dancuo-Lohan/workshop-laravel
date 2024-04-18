@@ -31,8 +31,8 @@
                         <a class="nav-link text-white" href="{{ route('developer.index') }}">Developers</a>
                     </li>
                 </ul>
+                <a href="{{ route('logout') }}">Déconnexion</a>
             </div>
-        </div>
     </nav>
     @if (session('success'))
         <div class="alert alert-success">

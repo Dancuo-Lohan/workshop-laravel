@@ -15,6 +15,9 @@ class CheckLogged
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if ($request->is('/logout'))
+            return $next($request);
+
         if (auth()->check()) {
             if (auth()->user()->role->name === 'admin')
                 return redirect()->intended('/administrator');

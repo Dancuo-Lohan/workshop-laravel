@@ -27,6 +27,7 @@ Route::controller(LoginController::class)->middleware('logged')->group(function 
     Route::post('/login', 'authenticate')->name('login');
 });
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 // #####################################################
