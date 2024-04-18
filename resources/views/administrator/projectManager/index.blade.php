@@ -15,6 +15,7 @@
                 <th>Last name</th>
                 <th>Function</th>
                 <th>Projects</th>
+                <th>Tasks</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,10 +26,11 @@
                 <td>{{ $projectManager->name }}</td>
                 <td>{{ $projectManager->job }}</td>
                 <td></td>
+                <td></td>
                 <td>
-                    <a href="" class="btn btn-primary">Voir
+                    <a href="{{ route('administrator.projectManager.show', ['projectManager' => $projectManager->id]) }}" class="btn btn-primary">Voir
                         plus</a>
-                    <a href="" class="btn btn-warning">Modifier</a>
+                    <a href="{{ route('administrator.projectManager.edit', ['projectManager' => $projectManager->id]) }}" class="btn btn-warning">Modifier</a>
                 </td>
             </tr>
             @endforeach
