@@ -40,6 +40,7 @@
                             </li>
                         </ul>
                     </div>
+                    <a href="{{ route('logout') }}">Déconnexion</a>
                 </div>
             </nav>
         @endif
