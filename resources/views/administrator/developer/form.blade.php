@@ -29,11 +29,16 @@
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+
+    @php
+        $tasksIds = $developer->tasks()->pluck('id');
+    @endphp
+
     <div class="form-group">
-        <label for="taks">Tasks :</label>
+        <label for="tasks">Tasks :</label>
         <select name="tasks[]" id="tasks" class="form-control" multiple>
             @foreach ($tasks as $task)
-                <option value="{{ $task->id }}">
+                <option value="{{ $task->id }}" @selected(old('tasks', $tasksIds->contains($task->id)))>
                     {{ $task->name }}
                 </option>
             @endforeach
