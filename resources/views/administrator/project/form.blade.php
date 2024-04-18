@@ -11,19 +11,28 @@
         <label for="client_id">Client :</label>
         <select name="client_id" id="client_id" class="form-control">
             <option value="">-- Sélectionner un client --</option>
-            <option value=""></option>
+            @foreach ($clients as $client)
+                <option value="{{ $client->id }}" @selected(old('client_id', $project->client_id) == $client->id)>
+                    {{ $client->company_name }}
+            @endforeach
         </select>
         @error('client_id')
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+    @php
+        $projectManagersIds = $project->projectManagers->pluck('id');
+    @endphp
     <div class="form-group">
-        <label for="">Chef de projet :</label>
-        <select name="" id="" class="form-control">
-            <option value="">-- Sélectionner un chef de projet --</option>
-            <option value=""></option>
+        <label for="projectManagers">Chef de projet :</label>
+        <select name="projectManagers[]" id="projectManagers" class="form-control" multiple>
+            @foreach ($projectManagers as $projectManager)
+                <option value="{{ $projectManager->id }}" @selected(old('projectManagers', $projectManagersIds->contains($projectManager->id)))>
+                    {{ $projectManager->name }}
+                </option>
+            @endforeach
         </select>
-        @error('')
+        @error('projectManagers')
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
