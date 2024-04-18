@@ -41,9 +41,9 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
         Route::get('/', 'projectManager')->name('index');
         Route::get('/new', 'createProjectManager')->name('create');
         Route::post('/new', 'storeProjectManager');
-        Route::get('/{projectManager:slug}/edit', 'editProjectManager')->name('edit');
-        Route::post('/{projectManager:slug}/edit', 'updateProjectManager');
-        Route::get('/{projectManager:slug}', 'showProjectManager')->name('show');
+        Route::get('/{projectManager:id}/edit', 'editProjectManager')->name('edit');
+        Route::post('/{projectManager:id}/edit', 'updateProjectManager');
+        Route::get('/{projectManager:id}', 'showProjectManager')->name('show');
     });
 
     Route::prefix('/client')->name('client.')->controller(AdministratorController::class)->group(function () {
@@ -93,9 +93,9 @@ Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectMan
     Route::get('/', 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
-    Route::get('/{projectManager:slug}/edit', 'edit')->name('edit');
-    Route::post('/{projectManager:slug}/edit', 'update');
-    Route::get('/{projectManager:slug}', 'show')->name('show');
+    Route::get('/{projectManager:id}/edit', 'edit')->name('edit');
+    Route::post('/{projectManager:id}/edit', 'update');
+    Route::get('/{projectManager:id}', 'show')->name('show');
 });
 
 
