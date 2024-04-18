@@ -29,11 +29,14 @@
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+    @php
+        $projectsIds = $projectManager->projects()->pluck('id');
+    @endphp
     <div class="form-group">
         <label for="projects">Projects :</label>
         <select name="projects[]" id="projects" class="form-control" multiple>
             @foreach ($projects as $project)
-                <option value="{{ $project->id }}">
+                <option value="{{ $project->id }}" @selected(old('projects', $projectsIds->contains($project->id)))>
                     {{ $project->name }}
                 </option>
             @endforeach
@@ -42,11 +45,14 @@
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+    @php
+        $tasksIds = $projectManager->tasks()->pluck('id');
+    @endphp
     <div class="form-group">
-        <label for="taks">Tasks :</label>
+        <label for="tasks">Tasks :</label>
         <select name="tasks[]" id="tasks" class="form-control" multiple>
             @foreach ($tasks as $task)
-                <option value="{{ $task->id }}">
+                <option value="{{ $task->id }}" @selected(old('tasks', $tasksIds->contains($task->id)))>
                     {{ $task->name }}
                 </option>
             @endforeach
