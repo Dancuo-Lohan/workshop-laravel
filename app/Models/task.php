@@ -20,10 +20,16 @@ class Task extends Model
         return $this->belongsTo(TaskTag::class);
     }
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
     protected $fillable = [
         'name',
         'description',
         'slug',
+        'project_id',
         'status_tag_id',
         'task_tag_id',
     ];
