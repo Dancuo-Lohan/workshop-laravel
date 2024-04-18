@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Projects list')
+@section('title', 'Admin dashboard')
 
 @section('content')
     <h1>Admin dashboard</h1>
@@ -10,6 +10,7 @@
         <a href="{{ route('project.create') }}" class="btn btn-dark btn-white-text font-weight-bold">Create a project</a>
         <a href="" class="btn btn-dark btn-white-text font-weight-bold">Create a developer</a>
         <a href="" class="btn btn-dark btn-white-text font-weight-bold">Create a client</a>
-        <a href="" class="btn btn-dark btn-white-text font-weight-bold">Create a task</a>
+        <a href="{{ route('administrator.task.index') }}" class="btn btn-dark btn-white-text font-weight-bold">Create a
+            task</a>
     </div>
 @endsection
