@@ -29,14 +29,17 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('projectManager.index') }}">Projects
+                                <a class="nav-link text-white"
+                                    href="{{ route('administrator.projectManager.index') }}">Projects
                                     manager</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('project.index') }}">Projects</a>
+                                <a class="nav-link text-white"
+                                    href="{{ route('administrator.project.index') }}">Projects</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('developer.index') }}">Developers</a>
+                                <a class="nav-link text-white"
+                                    href="{{ route('administrator.developer.index') }}">Developers</a>
                             </li>
                         </ul>
                     </div>

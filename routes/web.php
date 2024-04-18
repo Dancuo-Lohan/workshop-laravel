@@ -38,39 +38,48 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
     Route::get('/', 'index')->name('index');
 
     Route::prefix('/projectManager')->name('projectManager.')->controller(AdministratorController::class)->group(function () {
-        Route::get('/', 'projectManager')->name('projectManager');
-        Route::get('/new', 'createProjectManager')->name('createProjectManager');
+        Route::get('/', 'projectManager')->name('index');
+        Route::get('/new', 'createProjectManager')->name('create');
         Route::post('/new', 'storeProjectManager');
-        Route::get('/{projectManager:slug}/edit', 'editProjectManager')->name('editProjectManager');
+        Route::get('/{projectManager:slug}/edit', 'editProjectManager')->name('edit');
         Route::post('/{projectManager:slug}/edit', 'updateProjectManager');
-        Route::get('/{projectManager:slug}', 'showProjectManager')->name('showProjectManager');
+        Route::get('/{projectManager:slug}', 'showProjectManager')->name('show');
     });
 
     Route::prefix('/client')->name('client.')->controller(AdministratorController::class)->group(function () {
-        Route::get('/', 'client')->name('client');
-        Route::get('/new', 'createClient')->name('createClient');
+        Route::get('/', 'client')->name('index');
+        Route::get('/new', 'createClient')->name('create');
         Route::post('/new', 'storeClient');
-        Route::get('/{client:slug}/edit', 'editClient')->name('editClient');
+        Route::get('/{client:slug}/edit', 'editClient')->name('edit');
         Route::post('/{client:slug}/edit', 'updateClient');
-        Route::get('/{client:slug}', 'showClient')->name('showClient');
+        Route::get('/{client:slug}', 'showClient')->name('show');
+    });
+
+    Route::prefix('/developer')->name('developer.')->controller(AdministratorController::class)->group(function () {
+        Route::get('/', 'developer')->name('index');
+        Route::get('/new', 'createDeveloper')->name('create');
+        Route::post('/new', 'storeDeveloper');
+        Route::get('/{developer:slug}/edit', 'editDeveloper')->name('edit');
+        Route::post('/{developer:slug}/edit', 'updateDeveloper');
+        Route::get('/{developer:slug}', 'showDeveloper')->name('show');
     });
 
     Route::prefix('/project')->name('project.')->controller(AdministratorController::class)->group(function () {
-        Route::get('/', 'project')->name('project');
-        Route::get('/new', 'createProject')->name('createProject');
+        Route::get('/', 'project')->name('index');
+        Route::get('/new', 'createProject')->name('create');
         Route::post('/new', 'storeProject');
-        Route::get('/{project:slug}/edit', 'editProject')->name('editProject');
+        Route::get('/{project:slug}/edit', 'editProject')->name('edit');
         Route::post('/{project:slug}/edit', 'updateProject');
-        Route::get('/{project:slug}', 'showProject')->name('showProject');
+        Route::get('/{project:slug}', 'showProject')->name('show');
     });
 
     Route::prefix('/task')->name('task.')->controller(AdministratorController::class)->group(function () {
-        Route::get('/', 'task')->name('task');
-        Route::get('/new', 'createTask')->name('createProject');
+        Route::get('/', 'task')->name('index');
+        Route::get('/new', 'createTask')->name('create');
         Route::post('/new', 'storeTask');
-        Route::get('/{task:slug}/edit', 'editTask')->name('editTask');
+        Route::get('/{task:slug}/edit', 'editTask')->name('edit');
         Route::post('/{task:slug}/edit', 'updateTask');
-        Route::get('/{task:slug}', 'showTask')->name('showTask');
+        Route::get('/{task:slug}', 'showTask')->name('show');
     });
 });
 

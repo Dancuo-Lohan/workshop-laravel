@@ -10,6 +10,6 @@ class StatusTag extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'label'
     ];
 }
