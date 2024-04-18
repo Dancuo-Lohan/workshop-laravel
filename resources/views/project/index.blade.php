@@ -13,6 +13,8 @@
             <tr>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Client</th>
+                <th>Chef de projet</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,6 +23,8 @@
                 <tr>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->description }}</td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <a href="{{ route('project.show', ['project' => $project->slug]) }}" class="btn btn-primary">Voir
                             plus</a>

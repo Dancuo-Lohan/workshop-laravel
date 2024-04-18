@@ -40,16 +40,14 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
     Route::get('/', 'index')->name('index');
 });
 
-
-Route::prefix('/project-manager')->name('project-manager.')->controller(ProjectManagerController::class)->group(function () {
+Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectManagerController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
-    Route::get('/{project-manager:slug}/edit', 'edit')->name('edit');
-    Route::post('/{project-manager:slug}/edit', 'update');
-    Route::get('/{project-manager:slug}', 'show')->name('show');
+    Route::get('/{projectManager:slug}/edit', 'edit')->name('edit');
+    Route::post('/{projectManager:slug}/edit', 'update');
+    Route::get('/{projectManager:slug}', 'show')->name('show');
 });
-
 
 Route::prefix('/project')->name('project.')->controller(ProjectController::class)->group(function () {
     Route::get('/', 'index')->name('index');
