@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -17,6 +18,13 @@ class AdministratorController extends Controller
     public function developer(): View
     {
         return view('administrator.developer.index', []);
+    }
+ 
+    public function project(): View
+    {
+        return view('administrator.project.index', [
+            'projects' => Project::all()
+        ]);
     }
  
     public function projectManager(): View
