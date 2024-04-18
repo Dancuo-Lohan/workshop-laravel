@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Task as Task;
 use App\Models\User;
-use Illuminate\Console\View\Components\Task;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('task')) {
+        if (!Schema::hasTable('tasks')) {
             Schema::create('tasks', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
