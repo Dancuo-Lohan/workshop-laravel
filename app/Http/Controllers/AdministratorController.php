@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateDeveloperRequest;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\CreateTaskRequest;
 use App\Models\Project;
+use App\Models\Role;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -29,6 +31,26 @@ class AdministratorController extends Controller
         return view('administrator.developer.index', []);
     }
 
+    public function createDeveloper(): View
+    {
+        $developer = new User();
+        return view('administrator.developer.create', [
+            'developer' => $developer,
+            'tasks' => Task::select('id', 'name')->get()
+        ]);
+    }
+
+    public function storeDeveloper(CreateDeveloperRequest $request)
+    {
+        $developer = User::create([
+            ...$request->validated(),
+            'password' => bcrypt('testtest'),
+            'role_id' => Role::where('name', 'developer')->first()->id
+        ]);
+        $developer->tasks()->sync($request->validated('tasks'));
+
+        return redirect()->route('administrator.project.index')->with('success', "The developer has been successfully saved!");
+    }
 
 
     // ####################################
