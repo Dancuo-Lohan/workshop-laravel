@@ -20,7 +20,7 @@ return new class extends Migration
             });
         }
         
-        Schema::table('task', function (Blueprint $table) {
+        Schema::table('tasks', function (Blueprint $table) {
             $table->foreignIdFor(StatusTag::class)->nullable()->constrained()->cascadeOnDelete();
         });
     }
@@ -30,7 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('task', function (Blueprint $table) {
+        Schema::table('tasks', function (Blueprint $table) {
             $table->dropForeignIdFor(StatusTag::class);
         });
         Schema::dropIfExists('status_tags');
