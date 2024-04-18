@@ -13,4 +13,24 @@ class AdministratorController extends Controller
     {
         return view('administrator.index', []);
     }
+ 
+    public function developer(): View
+    {
+        return view('administrator.developer.index', []);
+    }
+ 
+    public function projectManager(): View
+    {
+        return view('administrator.projectManager.index', []);
+    }
+ 
+    public function client(): View
+    {
+        return view('administrator.client.index', []);
+    }
+ 
+    public function task(): View
+    {
+        return view('administrator.task.index', []);
+    }
 }
