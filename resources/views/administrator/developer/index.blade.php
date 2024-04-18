@@ -4,6 +4,11 @@
 
 @section('content')
     <h1>Developers</h1>
+    <div style="padding: 2rem 0;">
+        <a href="{{ route('administrator.developer.create') }}" class="btn btn-dark btn-white-text font-weight-bold">Create a
+            developer</a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
