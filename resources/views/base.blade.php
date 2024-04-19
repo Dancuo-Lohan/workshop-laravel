@@ -46,6 +46,9 @@
                                 <a class="nav-link text-white"
                                     href="{{ route('administrator.client.index') }}">Clients</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('administrator.task.index') }}">Tasks</a>
+                            </li>
                         </ul>
                     </div>
                     <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary text-white">Déconnexion</a>
