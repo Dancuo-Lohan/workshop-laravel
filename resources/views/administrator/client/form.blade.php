@@ -24,9 +24,9 @@
     </div>
     <button class="btn btn-primary">
         @if ($client->id)
-            Modifier
+            Update
         @else
-            Créer
+            Create
         @endif
     </button>
 </form>
