@@ -10,7 +10,7 @@
             </div>
             <div class="card-body">
                 <p><strong>Role:</strong> {{ $projectManager->role->name }}</p>
-                <p><strong>Fonction:</strong> {{ $projectManager->job }}</p>
+                <p><strong>Job:</strong> {{ $projectManager->job }}</p>
                 <p><strong>Email:</strong> {{ $projectManager->email }}</p>
             </div>
             <div class="card-footer text-muted">

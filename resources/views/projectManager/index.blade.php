@@ -10,7 +10,7 @@
                 <h3 class="card-title">Hello {{ $projectManager->name }} {{ $projectManager->firstName }}!</h3>
             </div>
             <div class="card-body">
-                <p><strong>Fonction: </strong>{{ $projectManager->job }}</p>
+                <p><strong>Job: </strong>{{ $projectManager->job }}</p>
                 @foreach ($projectManager->projects as $project)
                     <div>
                         <p class="card-title"><strong>Projects:</strong>

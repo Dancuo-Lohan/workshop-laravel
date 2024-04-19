@@ -11,7 +11,7 @@
             </h3>
         </div>
         <div class="card-body">
-            <p><strong>Fonction: </strong>{{ $developer->job }}</p>
+            <p><strong>Job: </strong>{{ $developer->job }}</p>
             @foreach ($developer->projects as $project)
                 <div>
                     <p class="card-title"><strong>Project: </strong>
