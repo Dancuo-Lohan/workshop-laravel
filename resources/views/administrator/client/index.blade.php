@@ -28,7 +28,7 @@
                     <td>
                         @foreach ($client->projects as $project)
                             <a href="{{ route('administrator.project.show', ['project' => $project]) }}"
-                                class="badge bg-primary">{{ $project->title }}</a>
+                                class="link-dark">{{ $project->title }}</a>
                         @endforeach
                     </td>
                     <td>
