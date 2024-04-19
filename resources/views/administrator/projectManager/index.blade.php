@@ -14,7 +14,7 @@
             <tr>
                 <th>First name</th>
                 <th>Last name</th>
-                <th>Function</th>
+                <th>Job</th>
                 <th>Projects</th>
                 <th>Tasks</th>
                 <th>Actions</th>
@@ -29,13 +29,13 @@
                     <td>
                         @foreach ($projectManager->projects as $project)
                             <a href="{{ route('administrator.project.show', ['project' => $project]) }}"
-                                class="badge bg-primary">{{ $project->title }}</a>
+                                class="link-dark">{{ $project->title }}</a>
                         @endforeach
                     </td>
                     <td>
                         @foreach ($projectManager->tasks as $task)
                             <a href="{{ route('administrator.task.show', ['task' => $task]) }}"
-                                class="badge bg-primary">{{ $task->name }}</a>
+                                class="link-dark">{{ $task->name }}</a>
                         @endforeach
                     </td>
                     <td>
