@@ -3,30 +3,18 @@
 @section('title', $developer->name . ' ' . $developer->firstName)
 
 @section('content')
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">{{ $developer->name }} {{ $developer->firstName }}</h5>
-            </div>
-            <div class="card w-75 mx-auto mt-4">
-                <div class="card-header">
-                    Fonction
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{{ $developer->role->name }}</p>
-                </div>
-            </div>
-            <div class="card w-75 mx-auto my-4">
-                <div class="card-header">
-                    Email
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{!! $developer->email !!}</p>
-                </div>
-            </div>
-            <div class="card-footer text-muted">
-                Created on {{ $developer->created_at->format('d/m/Y') }}
-            </div>
+    <div class="card" style="max-width: 600px;">
+        <div class="card-header">
+            <h3 class="card-title">{{ $developer->name }} {{ $developer->firstName }}</h3>
+        </div>
+        <div class="card-body">
+            <p>
+                <strong>Job: </strong>{{ $developer->role->name }}
+            </p>
+            <p><strong>Email: </strong>{!! $developer->email !!}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Created on {{ $developer->created_at->format('d/m/Y') }}
         </div>
     </div>
 @endsection
