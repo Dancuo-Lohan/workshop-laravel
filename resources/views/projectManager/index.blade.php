@@ -3,24 +3,23 @@
 @section('title', 'Welcome' . ' ' . $projectManager->name . ' ' . $projectManager->firstName . ' !')
 
 @section('content')
-    <h2>Project Manager dashboard</h2>
 
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Hello {{ $projectManager->name }} {{ $projectManager->firstName }}! The
-                    {{ $projectManager->job }}</h5>
+                <h3 class="card-title">Hello {{ $projectManager->name }} {{ $projectManager->firstName }}!</h3>
             </div>
             <div class="card-body">
+                <p><strong>Job : </strong>{{ $projectManager->job }}</p>
                 @foreach ($projectManager->projects as $project)
-                    <div class="my-4">
-                        <h5 class="card-title">
+                    <div>
+                        <p class="card-title"><strong>Projects :</strong>
                             <a href="{{ route('projectManager.project', ['project' => $project]) }}"
                                 class="text-underline text-black">{{ $project->title }}</a>
-                        </h5>
+                        </p>
                         @foreach ($project->tasks as $task)
                             <a href="{{ route('projectManager.task', ['task' => $task]) }}"
-                                class="badge bg-primary">{{ $task->name }}</a>
+                                class="link-dark">{{ $task->name }}</a>
                         @endforeach
                     </div>
                 @endforeach
