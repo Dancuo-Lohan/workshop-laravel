@@ -14,9 +14,9 @@
             <div class="card-body">
                 @foreach ($developer->projects as $project)
                     <div class="my-4">
-                        <h5 class="card-title>
-                        <a href="{{ route('developer.project', ['project' => $project]) }}"
-                            class="badge bg-primary">{{ $project->title }}</a>
+                        <h5 class="card-title">
+                            <a href="{{ route('developer.project', ['project' => $project]) }}"
+                                class="text-underline text-black">{{ $project->title }}</a>
                         </h5>
                         @foreach ($project->tasks as $task)
                             <a href="{{ route('developer.task', ['task' => $task]) }}"
