@@ -40,7 +40,8 @@ class AdministratorController extends Controller
         $developer = new User();
         return view('administrator.developer.create', [
             'developer' => $developer,
-            'tasks' => Task::select('id', 'name')->get()
+            'tasks' => Task::select('id', 'name')->get(),
+            'projects' => Project::select('id', 'title')->get()
         ]);
     }
 
@@ -52,6 +53,7 @@ class AdministratorController extends Controller
             'role_id' => Role::where('name', 'developer')->first()->id
         ]);
         $developer->tasks()->sync($request->validated('tasks'));
+        $developer->projects()->sync($request->validated('projects'));
 
         return redirect()->route('administrator.developer.index')->with('success', "The developer has been successfully saved!");
     }
@@ -60,7 +62,8 @@ class AdministratorController extends Controller
     {
         return view('administrator.developer.edit', [
             'developer' => $developer,
-            'tasks' => Task::select('id', 'name')->get()
+            'tasks' => Task::select('id', 'name')->get(),
+            'projects' => Project::select('id', 'title')->get()
         ]);
     }
 
@@ -68,6 +71,7 @@ class AdministratorController extends Controller
     {
         $developer->update($request->validated());
         $developer->tasks()->sync($request->validated('tasks'));
+        $developer->projects()->sync($request->validated('projects'));
 
         return redirect()->route('administrator.developer.index')->with('success', "The developer has been successfully modified!");
     }

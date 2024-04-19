@@ -27,6 +27,7 @@ class CreateDeveloperRequest extends FormRequest
             'email' => ['required', 'email', 'max:255'],
             'job' => ['required', 'string', 'max:40'],
             'tasks' => ['required', 'array', 'exists:tasks,id'],
+            'projects' => ['required', 'array', 'exists:projects,id'],
         ];
     }
 }
