@@ -23,7 +23,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="job">Function :</label>
+        <label for="job">Job :</label>
         <input name="job" id="job" class="form-control" value="{{ old('job', $developer->job) }}">
         @error('job')
             <span class="text-danger">{{ $message }}</span>

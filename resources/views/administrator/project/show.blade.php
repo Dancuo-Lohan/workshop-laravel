@@ -8,7 +8,7 @@
             <div class="card-header">
                 <h5 class="card-title">{{ $project->title }}</h5>
             </div>
-            
+
             <div class="card w-75 mx-auto mt-4">
                 <div class="card-header">
                     Description
@@ -17,25 +17,27 @@
                     <p class="card-text">{!! $project->description !!}</p>
                 </div>
             </div>
-            
+
             <div class="card w-75 mx-auto mt-4">
                 <div class="card-header">
                     Projects Managers
                 </div>
                 <div class="card-body">
-                    @foreach($project->projectManagers as $projectManager)
-                    <a href="{{ route('administrator.projectManager.show', ['projectManager' => $projectManager]) }}" class="card-text">{!! $projectManager->email !!}</a>                        
+                    @foreach ($project->projectManagers as $projectManager)
+                        <a href="{{ route('administrator.projectManager.show', ['projectManager' => $projectManager]) }}"
+                            class="card-text">{!! $projectManager->email !!}</a>
                     @endforeach
                 </div>
             </div>
-            
+
             <div class="card w-75 mx-auto my-4">
                 <div class="card-header">
                     Developers
                 </div>
                 <div class="card-body">
-                    @foreach($project->developers as $developer)
-                    <a href="{{ route('administrator.developer.show', ['developer' => $developer]) }}" class="card-text">{!! $developer->email !!}</p>                        
+                    @foreach ($project->developers as $developer)
+                        <a href="{{ route('administrator.developer.show', ['developer' => $developer]) }}"
+                            class="card-text">{!! $developer->email !!}</p>
                     @endforeach
                 </div>
             </div>
