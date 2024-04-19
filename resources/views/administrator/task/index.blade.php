@@ -17,8 +17,8 @@
                 <th>Project</th>
                 <th>Manager</th>
                 <th>Developer</th>
-                <th>Tags</th>
                 <th>Status</th>
+                <th>Tags</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -44,13 +44,13 @@
                     </td>
                     <td>
                         @if ($task->status_tag)
-                            {{ $task->status_tag->label }}
+                            <span class="badge bg-secondary">{{ $task->status_tag->label }}</span>
                         @endif
-
                     </td>
                     <td>
                         @if ($task->task_tag)
-                            {{ $task->task_tag->label }}
+                            <span class="badge {{ $task->task_tag->label === 'front' ? 'bg-dark' : 'bg-success' }}">
+                                {{ $task->task_tag->label }}</span>
                         @endif
                     </td>
                     <td>
