@@ -37,7 +37,7 @@
         <select name="projects[]" id="projects" class="form-control" multiple>
             @foreach ($projects as $project)
                 <option value="{{ $project->id }}" @selected(old('projects', $projectsIds->contains($project->id)))>
-                    {{ $project->name }}
+                    {{ $project->title }}
                 </option>
             @endforeach
         </select>
