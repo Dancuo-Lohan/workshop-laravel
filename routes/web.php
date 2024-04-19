@@ -50,9 +50,9 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
         Route::get('/', 'client')->name('index');
         Route::get('/new', 'createClient')->name('create');
         Route::post('/new', 'storeClient');
-        Route::get('/{client:slug}/edit', 'editClient')->name('edit');
-        Route::post('/{client:slug}/edit', 'updateClient');
-        Route::get('/{client:slug}', 'showClient')->name('show');
+        Route::get('/{client:id}/edit', 'editClient')->name('edit');
+        Route::post('/{client:id}/edit', 'updateClient');
+        Route::get('/{client:id}', 'showClient')->name('show');
     });
 
     Route::prefix('/developer')->name('developer.')->controller(AdministratorController::class)->group(function () {
