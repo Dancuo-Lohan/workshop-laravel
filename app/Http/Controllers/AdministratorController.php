@@ -200,6 +200,13 @@ class AdministratorController extends Controller
         ]);
     }
 
+    public function showClient(Client $client): RedirectResponse | View
+    {
+        return view('administrator.client.show', [
+            'client' => $client
+        ]);
+    }
+
     public function createClient()
     {
         $client = new Client();
@@ -214,6 +221,19 @@ class AdministratorController extends Controller
         
         $client = Client::create($request->validated());
         return redirect()->route('administrator.client.index')->with('success', "The client has been successfully saved!");
+    }
+
+    public function editClient(Client $client)
+    {
+        return view('administrator.client.edit', [
+            'client' => $client
+        ]);
+    }
+
+    public function updateclient(Client $client, CreateClientRequest $request)
+    {
+        $client->update($request->validated());
+        return redirect()->route('administrator.client.index')->with('success', "The client has been successfully modified!");
     }
 
 
