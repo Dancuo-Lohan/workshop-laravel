@@ -9,20 +9,24 @@
                 <h3 class="card-title">{{ $project->title }}</h3>
             </div>
             <div class="card-body">
-                <p><strong>Client</strong> <a
+                <p><strong>Client: </strong> <a
                         href="{{ route('administrator.client.show', ['client' => $project->client]) }}"
                         class="link-dark">{!! $project->client->company_name !!}</a>
                 </p>
-                <p> <strong>Developers</strong>
+                <p> <strong>Developers: </strong>
                     @foreach ($project->developers as $developer)
-                        <a href="{{ route('administrator.developer.show', ['developer' => $developer]) }}"
-                            class="link-dark">{!! $developer->name . ' ' . $developer->firstName !!}</a>
+                        <ul>
+                            <li><a href="{{ route('administrator.developer.show', ['developer' => $developer]) }}"
+                                    class="link-dark">{!! $developer->name . ' ' . $developer->firstName !!}</a></li>
+                        </ul>
                     @endforeach
                 </p>
-                <p> <strong>Projects Managers</strong>
+                <p> <strong>Projects Managers: </strong>
                     @foreach ($project->projectManagers as $projectManager)
-                        <a href="{{ route('administrator.projectManager.show', ['projectManager' => $projectManager]) }}"
-                            class="link-dark">{!! $projectManager->name . ' ' . $projectManager->firstName !!}</a>
+                        <ul>
+                            <li><a href="{{ route('administrator.projectManager.show', ['projectManager' => $projectManager]) }}"
+                                    class="link-dark">{!! $projectManager->name . ' ' . $projectManager->firstName !!}</a></li>
+                        </ul>
                     @endforeach
                 </p>
                 <p><strong>Description: </strong> {!! $project->description !!}
