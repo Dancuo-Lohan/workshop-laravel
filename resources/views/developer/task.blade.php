@@ -3,7 +3,7 @@
 @section('title', $task->name)
 
 @section('content')
-    <div class="container">
+    <div style="max-width: 600px;">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">{{ $task->name }}</h5>

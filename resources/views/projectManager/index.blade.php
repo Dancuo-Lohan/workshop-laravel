@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div style="max-width: 600px;">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Hello {{ $projectManager->name }} {{ $projectManager->firstName }}!</h3>
