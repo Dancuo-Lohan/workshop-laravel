@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Projects list')
+@section('title', 'Project Managers list')
 
 @section('content')
     <h1>Project managers</h1>
