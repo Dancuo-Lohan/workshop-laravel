@@ -18,19 +18,23 @@ Laravel uses an `.env` file to manage environment variables. You need to create 
 ```bash
 cp .env.example .env
 ```
-## 4. Database Setup and Seeding
+## 4. Generate the app key
+```bash
+php artisan key:generate
+```
+## 5. Database Setup and Seeding
 First, ensure your database details are correctly set in the `.env` file (by default we create a `.sqlite` file for the database). Then run the migrations (which set up your database schema) and seed the database.
 ```bash
 php artisan migrate
 php artisan db:seed
 ```
-## 5. Run the Development Server
+## 6. Run the Development Server
 Finally, to start the Laravel development server:
 ```bash
 php artisan serve
 ```
 This command will start a development server at http://localhost:8000 by default.
-## 6. List of accounts
+## 7. List of accounts
 After the project setup, you can try it using multiple users:
 - **Admin**
     - Email: `admin@email.fr`
