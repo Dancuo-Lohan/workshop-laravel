@@ -91,6 +91,8 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
 // Routes du chef de projet
 Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectManagerController::class)->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/task/{task:id}', 'task')->name('task');
+    Route::get('/project/{project:id}', 'project')->name('project');
 });
 
 
