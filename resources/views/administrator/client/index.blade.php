@@ -24,6 +24,7 @@
                 <tr>
                     <td>{{ $client->company_name }}</td>
                     <td>{{ $client->address }}</td>
+                    <td>{{ $client->website }}</td>
                     <td>{{ $client->project }}</td>
                     <td>
                         <a href="{{ route('administrator.client.show', ['client' => $client->id]) }}" class="btn btn-primary">Voir plus</a>
