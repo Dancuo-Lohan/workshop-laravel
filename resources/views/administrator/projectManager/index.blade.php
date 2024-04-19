@@ -29,7 +29,7 @@
                     <td>
                         @foreach ($projectManager->projects as $project)
                             <a href="{{ route('administrator.project.show', ['project' => $project]) }}"
-                                class="badge bg-primary">{{ $project->name }}</a>
+                                class="badge bg-primary">{{ $project->title }}</a>
                         @endforeach
                     </td>
                     <td>

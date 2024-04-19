@@ -164,7 +164,7 @@ class AdministratorController extends Controller
         return view('administrator.projectManager.create', [
             'projectManager' => $projectManager,
             'tasks' => Task::select('id', 'name')->get(),
-            'projects' => Project::select('id', 'name')->get()
+            'projects' => Project::select('id', 'title')->get()
         ]);
     }
 
@@ -186,7 +186,7 @@ class AdministratorController extends Controller
         return view('administrator.projectManager.edit', [
             'projectManager' => $projectManager,
             'tasks' => Task::select('id', 'name')->get(),
-            'projects' => Project::select('id', 'name')->get()
+            'projects' => Project::select('id', 'title')->get()
         ]);
     }
 
@@ -230,7 +230,7 @@ class AdministratorController extends Controller
 
     public function storeClient(CreateClientRequest $request)
     {
-        
+
         $client = Client::create($request->validated());
         return redirect()->route('administrator.client.index')->with('success', "The client has been successfully saved!");
     }
