@@ -18,8 +18,12 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if (!auth()->check() || auth()->user()->role->name !== $role) {
-            abort(403, 'Unauthorized access.');
+        if (!auth()->check()) {
+            return redirect()->intended('/login');
+        }
+
+        if (auth()->user()->role->name !== $role) {
+            abort(404, 'Not found.');
         }
 
         return $next($request);
