@@ -22,14 +22,16 @@ class UserSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'ProjectManager',
             'email' => 'proman@email.fr',
-            'role_id' => 1,
+            'role_id' => 3,
+            'job' => 'Project Manager',
             'password' => bcrypt('testtest')
         ]);
 
         \App\Models\User::factory()->create([
             'name' => 'Developer',
             'email' => 'dev@email.fr',
-            'role_id' => 1,
+            'role_id' => 2,
+            'job' => 'Developer',
             'password' => bcrypt('testtest')
         ]);
     }
