@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <!-- Login navbar -->
     @if (!auth()->check())
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -50,7 +51,18 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="{{ route('logout') }}" class="btn btn-light">Déconnexion</a>
+                    <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary text-white">Déconnexion</a>
+                </div>
+            </nav>
+        @elseif (auth()->user()->role->name != 'admin')
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <a class="navbar-brand text-white" href="#">Project Management Dashboard</a>
+                        </ul>
+                    </div>
+                    <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary text-white">Déconnexion</a>
                 </div>
             </nav>
         @endif

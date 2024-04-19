@@ -14,7 +14,7 @@
             <tr>
                 <th>First name</th>
                 <th>Last name</th>
-                <th>Function</th>
+                <th>Job</th>
                 <th>Tasks</th>
                 <th>Projects</th>
                 <th>Actions</th>
