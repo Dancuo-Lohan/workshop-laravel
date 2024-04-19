@@ -26,8 +26,8 @@
                     <td>{{ $project->description }}</td>
                     <td>
                         @if ($project->client)
-                            <a
-                                href="{{ route('administrator.client.show', ['client' => $project->client->id]) }}">{{ $project->client?->company_name }}</a>
+                            <a href="{{ route('administrator.client.show', ['client' => $project->client->id]) }}"
+                                class="link-dark">{{ $project->client?->company_name }}</a>
                         @endif
                     </td>
                     <td>
