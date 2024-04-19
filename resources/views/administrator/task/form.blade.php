@@ -15,6 +15,18 @@
         @enderror
     </div>
     <div class="form-group">
+        <label for="project_id">Project :</label>
+        <select name="project_id" id="project_id" class="form-control">
+            <option value="">-- Select a project --</option>
+            @foreach ($projects as $project)
+                <option @selected(old('project_id', $task->project_id) == $project->id) value="{{ $project->id }}">{{ $project->title }}</option>
+            @endforeach
+        </select>
+        @error('project_id')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="form-group">
         <label for="status_tag_id">Status :</label>
         <select name="status_tag_id" id="status_tag_id" class="form-control">
             <option value="">-- Select task status --</option>

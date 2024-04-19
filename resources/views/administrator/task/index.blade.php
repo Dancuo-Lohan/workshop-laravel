@@ -15,7 +15,8 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Project</th>
-                <th>Project manager / Dev</th>
+                <th>Manager</th>
+                <th>Developer</th>
                 <th>Tags</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -26,21 +27,18 @@
                 <tr>
                     <td>{{ $task->name }}</td>
                     <td>{{ $task->description }}</td>
-                    <td></td>
-                    <td></td>
                     <td>
-                        @if ($task->tag)
-                            <span>{{ $task->tag->label }}</span>
-                        @else
-                            Aucun tag
+                        @if ($task->project)
+                            {{ $task->project->title }}
                         @endif
                     </td>
+                    <td></td>
+                    <td></td>
                     <td>
-                        @if ($task->status)
-                            <span>{{ $task->status->label }}</span>
-                        @else
-                            Aucun statut
-                        @endif
+
+                    </td>
+                    <td>
+
                     </td>
                     <td>
                         <a href="{{ route('administrator.task.show', ['task' => $task->slug]) }}" class="btn btn-primary">Voir

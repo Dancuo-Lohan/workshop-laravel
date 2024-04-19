@@ -5,7 +5,8 @@
 @section('content')
     <h1>Projets</h1>
     <div style="padding: 2rem 0;">
-        <a href="{{ route('administrator.project.create') }}" class="btn btn-dark btn-white-text font-weight-bold">Create a project</a>
+        <a href="{{ route('administrator.project.create') }}" class="btn btn-dark btn-white-text font-weight-bold">Create a
+            project</a>
     </div>
 
     <table class="table">
@@ -26,7 +27,8 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <a href="{{ route('administrator.project.show', ['project' => $project->slug]) }}" class="btn btn-primary">Voir
+                        <a href="{{ route('administrator.project.show', ['project' => $project->slug]) }}"
+                            class="btn btn-primary">Voir
                             plus</a>
                         <a href="{{ route('administrator.project.edit', ['project' => $project->slug]) }}"
                             class="btn btn-warning">Modifier</a>

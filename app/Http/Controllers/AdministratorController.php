@@ -109,7 +109,7 @@ class AdministratorController extends Controller
     public function task(): View
     {
         return view('administrator.task.index', [
-            'tasks' => Task::orderBy('id', 'desc')->paginate(10)
+            'tasks' => Task::orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -125,6 +125,7 @@ class AdministratorController extends Controller
         $task = new Task();
         return view('administrator.task.create', [
             'task' => $task,
+            'projects' => Project::select('id', 'title')->get(),
             'status_tags' => StatusTag::select('id', 'label')->get(),
             'task_tags' => TaskTag::select('id', 'label')->get()
         ]);
@@ -140,6 +141,7 @@ class AdministratorController extends Controller
     {
         return view('administrator.task.edit', [
             'task' => $task,
+            'projects' => Project::select('id', 'title')->get(),
             'status_tags' => StatusTag::select('id', 'label')->get(),
             'task_tags' => TaskTag::select('id', 'label')->get()
         ]);

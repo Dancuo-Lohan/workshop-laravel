@@ -27,6 +27,7 @@ class CreateTaskRequest extends FormRequest
             'name' => ['required'],
             'slug' => ['required', 'regex:/^[a-z0-9\-]+$/', Rule::unique('tasks')->ignore($this->route()->parameter('task'))],
             'description' => ['required'],
+            'project_id' => ['required', 'exists:projects,id'],
             'task_tag_id' => ['required', 'exists:task_tags,id'],
             'status_tag_id' => ['required', 'exists:status_tags,id'],
         ];
