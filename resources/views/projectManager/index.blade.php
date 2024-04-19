@@ -12,26 +12,16 @@
                     {{ $projectManager->job }}</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    <strong>Tasks:</strong>
-                <ul>
-                    @foreach ($projectManager->tasks as $task)
-                        <li>
-                            <a href="{{ route('projectManager.task', ['task' => $task]) }}"
-                                class="badge bg-primary">{{ $task->name }}</a>
-                        </li>
+                @foreach ($projectManager->projects as $project)
+                    <h5 class="card-title>
+                        <a href="{{ route('projectManager.project', ['project' => $project]) }}"
+                        class="badge bg-primary">{{ $project->title }}</a>
+                    </h5>
+                    @foreach ($project->tasks as $task)
+                        <a href="{{ route('projectManager.task', ['task' => $task]) }}"
+                            class="badge bg-primary">{{ $task->name }}</a>
                     @endforeach
-                </ul>
-                <strong>Projects:</strong>
-                <ul>
-                    @foreach ($projectManager->projects as $project)
-                        <li>
-                            <a href="{{ route('projectManager.project', ['project' => $project]) }}"
-                                class="badge bg-primary">{{ $project->title }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-                </p>
+                @endforeach
             </div>
             <div class="card-footer text-muted">
                 Account created on {{ $projectManager->created_at->format('d/m/Y') }}
