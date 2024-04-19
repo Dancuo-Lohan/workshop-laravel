@@ -30,3 +30,14 @@ Finally, to start the Laravel development server:
 php artisan serve
 ```
 This command will start a development server at http://localhost:8000 by default.
+## 6. List of the accounts
+After the project setup, you can try it using multiples users:
+- **Admin**
+    - Email: `admin@email.fr`
+    - Password: `testtest`
+- **Project Manager**
+    - Email: `proman@email.fr`
+    - Password: `testtest`
+- **Developer**
+    - Email: `dev@email.fr`
+    - Password: `testtest`
