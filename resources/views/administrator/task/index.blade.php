@@ -43,6 +43,9 @@
                         @endforeach
                     </td>
                     <td>
+                        @if ($task->status_tag)
+                            {{ $task->status_tag->label }}
+                        @endif
 
                     </td>
                     <td>

@@ -111,7 +111,8 @@ class AdministratorController extends Controller
     public function task(): View
     {
         return view('administrator.task.index', [
-            'tasks' => Task::with('projectManagers')->get()
+            'tasks' => Task::with('status_tags')->get(),
+
         ]);
     }
 
@@ -145,16 +146,20 @@ class AdministratorController extends Controller
 
     public function editTask(Task $task)
     {
-        return view('administrator.project.edit', [
+        return view('administrator.task.edit', [
             'task' => $task,
-            'developers' => User::where('role_id', Role::where('name', 'developer')->first()->id)->get(),
-            'projectManagers' => User::where('role_id', Role::where('name', 'project-manager')->first()->id)->get()
+            'projects' => Project::select('id', 'title')->get(),
+            'status_tags' => StatusTag::select('id', 'label')->get(),
+            'task_tags' => TaskTag::select('id', 'label')->get(),
+            'projectManagers' => User::where('role_id', Role::where('name', 'project-manager')->first()->id)->get(),
+            'developers' => User::where('role_id', Role::where('name', 'developer')->first()->id)->get()
         ]);
     }
 
     public function updateTask(Task $task, CreateTaskRequest $request)
     {
         $task->update($request->validated());
+        dd($request->validated());
         $task->developers()->sync($request->validated('developers'));
         $task->projectManagers()->sync($request->validated('projectManagers'));
         return redirect()->route('administrator.task.index')->with('success', "The task has been successfully modified!");

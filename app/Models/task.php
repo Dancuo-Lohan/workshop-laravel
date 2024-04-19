@@ -11,16 +11,6 @@ class Task extends Model
 {
     use HasFactory;
 
-    public function statut(): BelongsTo
-    {
-        return $this->belongsTo(StatusTag::class);
-    }
-
-    public function tag(): BelongsTo
-    {
-        return $this->belongsTo(TaskTag::class);
-    }
-
     public function project()
     {
         return $this->belongsTo(Project::class);
@@ -33,7 +23,17 @@ class Task extends Model
 
     public function developers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->where('role_id', Role::where('name', 'developer')->first()->id);
+    }
+
+    public function status_tags(): BelongsTo
+    {
+        return $this->belongsTo(StatusTag::class);
+    }
+
+    public function task_tags(): BelongsTo
+    {
+        return $this->belongsTo(TaskTag::class);
     }
 
     protected $fillable = [

@@ -32,6 +32,7 @@
     <div class="form-group">
         <label for="projectManagers">Manager :</label>
         <select name="projectManagers[]" id="projectManagers" class="form-control" multiple>
+            <option value="">-- Select managers --</option>
             @foreach ($projectManagers as $projectManager)
                 <option value="{{ $projectManager->id }}" @selected(old('projectManagers', $projectManagersIds->contains($projectManager->id)))>
                     {{ $projectManager->name }}
@@ -48,6 +49,7 @@
     <div class="form-group">
         <label for="developers">Developer :</label>
         <select name="developers[]" id="developers" class="form-control" multiple>
+            <option value="">-- Select developers --</option>
             @foreach ($developers as $developer)
                 <option value="{{ $developer->id }}" @selected(old('developers', $developersIds->contains($developer->id)))>
                     {{ $developer->name }}
