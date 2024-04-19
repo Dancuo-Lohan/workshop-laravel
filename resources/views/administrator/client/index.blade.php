@@ -25,10 +25,17 @@
                     <td>{{ $client->company_name }}</td>
                     <td>{{ $client->address }}</td>
                     <td>{{ $client->website }}</td>
-                    <td>{{ $client->project }}</td>
                     <td>
-                        <a href="{{ route('administrator.client.show', ['client' => $client->id]) }}" class="btn btn-primary">Voir plus</a>
-                        <a href="{{ route('administrator.client.edit', ['client' => $client->id]) }}" class="btn btn-warning">Modifier</a>
+                        @foreach ($client->projects as $project)
+                            <a href="{{ route('administrator.project.show', ['project' => $project]) }}"
+                                class="badge bg-primary">{{ $project->title }}</a>
+                        @endforeach
+                    </td>
+                    <td>
+                        <a href="{{ route('administrator.client.show', ['client' => $client->id]) }}"
+                            class="btn btn-primary">Voir plus</a>
+                        <a href="{{ route('administrator.client.edit', ['client' => $client->id]) }}"
+                            class="btn btn-warning">Modifier</a>
                     </td>
                 </tr>
             @endforeach
