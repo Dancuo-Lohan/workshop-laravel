@@ -26,6 +26,38 @@
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+    @php
+        $projectManagersIds = $task->projectManagers->pluck('id');
+    @endphp
+    <div class="form-group">
+        <label for="projectManagers">Manager :</label>
+        <select name="projectManagers[]" id="projectManagers" class="form-control" multiple>
+            @foreach ($projectManagers as $projectManager)
+                <option value="{{ $projectManager->id }}" @selected(old('projectManagers', $projectManagersIds->contains($projectManager->id)))>
+                    {{ $projectManager->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('projectManagers')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+    @php
+        $developersIds = $task->developers->pluck('id');
+    @endphp
+    <div class="form-group">
+        <label for="developers">Developer :</label>
+        <select name="developers[]" id="developers" class="form-control" multiple>
+            @foreach ($developers as $developer)
+                <option value="{{ $developer->id }}" @selected(old('developers', $developersIds->contains($developer->id)))>
+                    {{ $developer->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('developers')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
     <div class="form-group">
         <label for="status_tag_id">Status :</label>
         <select name="status_tag_id" id="status_tag_id" class="form-control">

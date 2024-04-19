@@ -32,8 +32,16 @@
                             {{ $task->project->title }}
                         @endif
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        @foreach ($task->projectManagers as $projectManager)
+                            {{ $projectManager->name }}
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach ($task->developers as $developer)
+                            {{ $developer->name }}
+                        @endforeach
+                    </td>
                     <td>
 
                     </td>

@@ -30,6 +30,8 @@ class CreateTaskRequest extends FormRequest
             'project_id' => ['required', 'exists:projects,id'],
             'task_tag_id' => ['required', 'exists:task_tags,id'],
             'status_tag_id' => ['required', 'exists:status_tags,id'],
+            'projectManagers' => ['required', 'array', 'exists:users,id'],
+            'developers' => ['required', 'array', 'exists:users,id']
         ];
     }
 

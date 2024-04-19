@@ -9,6 +9,7 @@ use App\Models\StatusTag;
 use App\Models\Task;
 use App\Models\TaskTag;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -106,10 +107,11 @@ class AdministratorController extends Controller
     // ####################################
     // ####################################
     //  Task
+
     public function task(): View
     {
         return view('administrator.task.index', [
-            'tasks' => Task::orderBy('id', 'desc')->get(),
+            'tasks' => Task::with('projectManagers')->get()
         ]);
     }
 
@@ -127,29 +129,34 @@ class AdministratorController extends Controller
             'task' => $task,
             'projects' => Project::select('id', 'title')->get(),
             'status_tags' => StatusTag::select('id', 'label')->get(),
-            'task_tags' => TaskTag::select('id', 'label')->get()
+            'task_tags' => TaskTag::select('id', 'label')->get(),
+            'projectManagers' => User::where('role_id', Role::where('name', 'project-manager')->first()->id)->get(),
+            'developers' => User::where('role_id', Role::where('name', 'developer')->first()->id)->get()
         ]);
     }
 
     public function storeTask(CreateTaskRequest $request)
     {
         $task = Task::create($request->validated());
+        $task->projectManagers()->sync($request->validated('projectManagers'));
+        $task->developers()->sync($request->validated('developers'));
         return redirect()->route('administrator.task.index')->with('success', "The task has been successfully saved!");
     }
 
     public function editTask(Task $task)
     {
-        return view('administrator.task.edit', [
+        return view('administrator.project.edit', [
             'task' => $task,
-            'projects' => Project::select('id', 'title')->get(),
-            'status_tags' => StatusTag::select('id', 'label')->get(),
-            'task_tags' => TaskTag::select('id', 'label')->get()
+            'developers' => User::where('role_id', Role::where('name', 'developer')->first()->id)->get(),
+            'projectManagers' => User::where('role_id', Role::where('name', 'project-manager')->first()->id)->get()
         ]);
     }
 
     public function updateTask(Task $task, CreateTaskRequest $request)
     {
         $task->update($request->validated());
+        $task->developers()->sync($request->validated('developers'));
+        $task->projectManagers()->sync($request->validated('projectManagers'));
         return redirect()->route('administrator.task.index')->with('success', "The task has been successfully modified!");
     }
 }
