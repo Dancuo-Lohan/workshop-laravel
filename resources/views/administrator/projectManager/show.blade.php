@@ -4,33 +4,14 @@
 
 @section('content')
     <div class="container">
-        <div class="card">
+        <div class="card" style="max-width: 500px;">
             <div class="card-header">
-                <h5 class="card-title">{{ $projectManager->name }} {{ $projectManager->firstName }}</h5>
+                <h3 class="card-title">{{ $projectManager->name }} {{ $projectManager->firstName }}</h3>
             </div>
-            <div class="card w-75 mx-auto mt-4">
-                <div class="card-header">
-                    Role
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{{ $projectManager->role->name }}</p>
-                </div>
-            </div>
-            <div class="card w-75 mx-auto mt-4">
-                <div class="card-header">
-                    Fonction
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{!! $projectManager->job !!}</p>
-                </div>
-            </div>
-            <div class="card w-75 mx-auto my-4">
-                <div class="card-header">
-                    Email
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{!! $projectManager->email !!}</p>
-                </div>
+            <div class="card-body">
+                <p><strong>Role:</strong> {{ $projectManager->role->name }}</p>
+                <p><strong>Job:</strong> {{ $projectManager->job }}</p>
+                <p><strong>Email:</strong> {{ $projectManager->email }}</p>
             </div>
             <div class="card-footer text-muted">
                 Created on {{ $projectManager->created_at->format('d/m/Y') }}
