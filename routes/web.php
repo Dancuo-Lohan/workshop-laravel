@@ -91,11 +91,6 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
 // Routes du chef de projet
 Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectManagerController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::post('/new', 'store');
-    Route::get('/{projectManager:id}/edit', 'edit')->name('edit');
-    Route::post('/{projectManager:id}/edit', 'update');
-    Route::get('/{projectManager:id}', 'show')->name('show');
 });
 
 
@@ -106,20 +101,17 @@ Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectMan
 // Routes du développeur
 Route::prefix('/developer')->middleware('role:developer')->name('developer.')->controller(DeveloperController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::post('/new', 'store');
-    Route::get('/{developer:slug}/edit', 'edit')->name('edit');
-    Route::post('/{developer:slug}/edit', 'update');
-    Route::get('/{developer:slug}', 'show')->name('show');
+    Route::get('/task/{task:id}', 'task')->name('task');
+    Route::get('/project/{project:id}', 'project')->name('project');
 });
 
 
 
+// #####################################################
+// #####################################################
+// #####################################################
+// Routes du projet
 Route::prefix('/project')->name('project.')->controller(ProjectController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::post('/new', 'store');
-    Route::get('/{project:slug}/edit', 'edit')->name('edit');
-    Route::post('/{project:slug}/edit', 'update');
-    Route::get('/{project:slug}', 'show')->name('show');
+    Route::get('/{project:id}', 'show')->name('show');
 });
