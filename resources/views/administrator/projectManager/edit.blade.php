@@ -3,5 +3,5 @@
 @section('title', 'Update a Projects manager')
 
 @section('content')
-    @include('projectManager.form')
+    @include('administrator.projectManager.form')
 @endsection

@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Create a developer')
+@section('title', 'Edit a developer')
 
 @section('content')
     @include('administrator.developer.form')

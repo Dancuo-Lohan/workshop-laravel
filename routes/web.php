@@ -41,27 +41,27 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
         Route::get('/', 'projectManager')->name('index');
         Route::get('/new', 'createProjectManager')->name('create');
         Route::post('/new', 'storeProjectManager');
-        Route::get('/{projectManager:slug}/edit', 'editProjectManager')->name('edit');
-        Route::post('/{projectManager:slug}/edit', 'updateProjectManager');
-        Route::get('/{projectManager:slug}', 'showProjectManager')->name('show');
+        Route::get('/{projectManager:id}/edit', 'editProjectManager')->name('edit');
+        Route::post('/{projectManager:id}/edit', 'updateProjectManager');
+        Route::get('/{projectManager:id}', 'showProjectManager')->name('show');
     });
 
     Route::prefix('/client')->name('client.')->controller(AdministratorController::class)->group(function () {
         Route::get('/', 'client')->name('index');
         Route::get('/new', 'createClient')->name('create');
         Route::post('/new', 'storeClient');
-        Route::get('/{client:slug}/edit', 'editClient')->name('edit');
-        Route::post('/{client:slug}/edit', 'updateClient');
-        Route::get('/{client:slug}', 'showClient')->name('show');
+        Route::get('/{client:id}/edit', 'editClient')->name('edit');
+        Route::post('/{client:id}/edit', 'updateClient');
+        Route::get('/{client:id}', 'showClient')->name('show');
     });
 
     Route::prefix('/developer')->name('developer.')->controller(AdministratorController::class)->group(function () {
         Route::get('/', 'developer')->name('index');
         Route::get('/new', 'createDeveloper')->name('create');
         Route::post('/new', 'storeDeveloper');
-        Route::get('/{developer:slug}/edit', 'editDeveloper')->name('edit');
-        Route::post('/{developer:slug}/edit', 'updateDeveloper');
-        Route::get('/{developer:slug}', 'showDeveloper')->name('show');
+        Route::get('/{developer:id}/edit', 'editDeveloper')->name('edit');
+        Route::post('/{developer:id}/edit', 'updateDeveloper');
+        Route::get('/{developer:id}', 'showDeveloper')->name('show');
     });
 
     Route::prefix('/project')->name('project.')->controller(AdministratorController::class)->group(function () {
@@ -91,11 +91,8 @@ Route::prefix('/administrator')->middleware('role:admin')->name('administrator.'
 // Routes du chef de projet
 Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectManagerController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::post('/new', 'store');
-    Route::get('/{projectManager:slug}/edit', 'edit')->name('edit');
-    Route::post('/{projectManager:slug}/edit', 'update');
-    Route::get('/{projectManager:slug}', 'show')->name('show');
+    Route::get('/task/{task:id}', 'task')->name('task');
+    Route::get('/project/{project:id}', 'project')->name('project');
 });
 
 
@@ -106,20 +103,17 @@ Route::prefix('/projectManager')->name('projectManager.')->controller(ProjectMan
 // Routes du développeur
 Route::prefix('/developer')->middleware('role:developer')->name('developer.')->controller(DeveloperController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::post('/new', 'store');
-    Route::get('/{developer:slug}/edit', 'edit')->name('edit');
-    Route::post('/{developer:slug}/edit', 'update');
-    Route::get('/{developer:slug}', 'show')->name('show');
+    Route::get('/task/{task:id}', 'task')->name('task');
+    Route::get('/project/{project:id}', 'project')->name('project');
 });
 
 
 
+// #####################################################
+// #####################################################
+// #####################################################
+// Routes du projet
 Route::prefix('/project')->name('project.')->controller(ProjectController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/new', 'create')->name('create');
-    Route::post('/new', 'store');
-    Route::get('/{project:slug}/edit', 'edit')->name('edit');
-    Route::post('/{project:slug}/edit', 'update');
-    Route::get('/{project:slug}', 'show')->name('show');
+    Route::get('/{project:id}', 'show')->name('show');
 });

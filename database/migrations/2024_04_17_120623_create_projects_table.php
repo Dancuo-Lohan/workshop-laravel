@@ -24,7 +24,7 @@ return new class extends Migration
         }
 
         
-        if (!Schema::hasTable('projects')) {
+        if (!Schema::hasTable('project_user')) {
             Schema::create('project_user', function (Blueprint $table) {
                 $table->foreignIdFor(Project::class)->constrained()->cascadeOnDelete();
                 $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();

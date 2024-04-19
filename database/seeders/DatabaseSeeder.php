@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
             StatusTagSeeder::class,
             TaskTagSeeder::class,
         ]);
+
+        \App\Models\Task::factory(10)->create();
     }
 }

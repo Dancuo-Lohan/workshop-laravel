@@ -42,6 +42,10 @@
                                     href="{{ route('administrator.developer.index') }}">Developers</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-white"
+                                    href="{{ route('administrator.client.index') }}">Clients</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('administrator.task.index') }}">Tasks</a>
                             </li>
                         </ul>

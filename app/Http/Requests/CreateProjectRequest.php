@@ -26,7 +26,9 @@ class CreateProjectRequest extends FormRequest
         return [
             'title' => ['required'],
             'slug' => ['required', 'regex:/^[a-z0-9\-]+$/', Rule::unique('projects')->ignore($this->route()->parameter('project'))],
-            'description' => ['required']
+            'description' => ['required'],
+            'client_id' => ['required', 'exists:clients,id'],
+            'projectManagers' => ['required', 'array', 'exists:users,id']
         ];
     }
 

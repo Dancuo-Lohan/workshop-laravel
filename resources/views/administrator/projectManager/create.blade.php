@@ -1,7 +1,7 @@
 @extends('base')
 
-@section('title', 'Create a Projects manager')
+@section('title', 'Create a project manager')
 
 @section('content')
-    @include('projectManager.form')
+@include('administrator.projectManager.form')
 @endsection

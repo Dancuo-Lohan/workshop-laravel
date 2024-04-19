@@ -24,8 +24,17 @@
                 <tr>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->description }}</td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        @if ($project->client)
+                            <a
+                                href="{{ route('administrator.client.show', ['client' => $project->client->id]) }}">{{ $project->client?->company_name }}</a>
+                        @endif
+                    </td>
+                    <td>
+                        @foreach ($project->projectManagers as $projectManager)
+                            {{ $projectManager->name }}
+                        @endforeach
+                    </td>
                     <td>
                         <a href="{{ route('administrator.project.show', ['project' => $project->slug]) }}"
                             class="btn btn-primary">Voir

@@ -23,7 +23,7 @@ class CheckLogged
                 return redirect()->intended('/administrator');
 
             if (auth()->user()->role->name === 'project-manager')
-                return redirect()->intended('/project-manager');
+                return redirect()->intended('/projectManager');
 
             if (auth()->user()->role->name === 'developer')
                 return redirect()->intended('/developer');
