@@ -18,7 +18,18 @@ class Project extends Model
 
     public function projectManagers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'project_user', 'project_id', 'user_id')
+        ->whereHas('role', function ($query) {
+            $query->where('name', 'project-manager');
+        });
+    }
+
+    public function developers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'project_user', 'project_id', 'user_id')
+        ->whereHas('role', function ($query) {
+            $query->where('name', 'developer');
+        });
     }
 
     protected $fillable = [
