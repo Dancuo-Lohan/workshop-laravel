@@ -49,7 +49,9 @@
 
                     </td>
                     <td>
-
+                        @if ($task->task_tag)
+                            {{ $task->task_tag->label }}
+                        @endif
                     </td>
                     <td>
                         <a href="{{ route('administrator.task.show', ['task' => $task->slug]) }}" class="btn btn-primary">Voir
