@@ -35,7 +35,7 @@
             <option value="">-- Select managers --</option>
             @foreach ($projectManagers as $projectManager)
                 <option value="{{ $projectManager->id }}" @selected(old('projectManagers', $projectManagersIds->contains($projectManager->id)))>
-                    {{ $projectManager->name }}
+                    {{ $projectManager->name }} {{ $projectManager->id }}
                 </option>
             @endforeach
         </select>
@@ -52,7 +52,7 @@
             <option value="">-- Select developers --</option>
             @foreach ($developers as $developer)
                 <option value="{{ $developer->id }}" @selected(old('developers', $developersIds->contains($developer->id)))>
-                    {{ $developer->name }}
+                    {{ $developer->name }} {{ $developer->id }}
                 </option>
             @endforeach
         </select>

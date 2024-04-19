@@ -260,7 +260,7 @@ class AdministratorController extends Controller
     public function task(): View
     {
         return view('administrator.task.index', [
-            'tasks' => Task::with('status_tags')->get(),
+            'tasks' => Task::all(),
 
         ]);
     }
@@ -288,8 +288,8 @@ class AdministratorController extends Controller
     public function storeTask(CreateTaskRequest $request)
     {
         $task = Task::create($request->validated());
-        $task->projectManagers()->sync($request->validated('projectManagers'));
-        $task->developers()->sync($request->validated('developers'));
+        $task->users()->sync([...$request->validated('developers'), ...$request->validated('projectManagers')]);
+
         return redirect()->route('administrator.task.index')->with('success', "The task has been successfully saved!");
     }
 
@@ -308,9 +308,8 @@ class AdministratorController extends Controller
     public function updateTask(Task $task, CreateTaskRequest $request)
     {
         $task->update($request->validated());
-        dd($request->validated());
-        $task->developers()->sync($request->validated('developers'));
-        $task->projectManagers()->sync($request->validated('projectManagers'));
+        $task->users()->sync([...$request->validated('developers'), ...$request->validated('projectManagers')]);
+
         return redirect()->route('administrator.task.index')->with('success', "The task has been successfully modified!");
     }
 }
