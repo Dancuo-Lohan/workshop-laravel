@@ -12,7 +12,7 @@
                 <p class="card-text">{!! $project->description !!}</p>
             </div>
             <div class="card-footer text-muted">
-                Créé le {{ $project->created_at->format('d/m/Y') }}
+                Created on {{ $project->created_at->format('d/m/Y') }}
             </div>
         </div>
     </div>

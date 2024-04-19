@@ -51,7 +51,7 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary text-white">Déconnexion</a>
+                    <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary text-white">Logout</a>
                 </div>
             </nav>
         @elseif (auth()->user()->role->name != 'admin')
@@ -62,7 +62,7 @@
                             <a class="navbar-brand text-white" href="#">Project Management Dashboard</a>
                         </ul>
                     </div>
-                    <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary text-white">Déconnexion</a>
+                    <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-secondary text-white">Logout</a>
                 </div>
             </nav>
         @endif

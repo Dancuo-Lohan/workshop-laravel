@@ -11,10 +11,10 @@
             </h3>
         </div>
         <div class="card-body">
-            <p><strong>Job : </strong>{{ $developer->job }}</p>
+            <p><strong>Fonction: </strong>{{ $developer->job }}</p>
             @foreach ($developer->projects as $project)
                 <div>
-                    <p class="card-title"><strong>Project : </strong>
+                    <p class="card-title"><strong>Project: </strong>
                         <a href="{{ route('developer.project', ['project' => $project]) }}"
                             class="text-underline text-black">{{ $project->title }}</a>
                     </p>

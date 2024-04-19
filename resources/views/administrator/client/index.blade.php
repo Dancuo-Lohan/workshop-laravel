@@ -33,9 +33,9 @@
                     </td>
                     <td>
                         <a href="{{ route('administrator.client.show', ['client' => $client->id]) }}"
-                            class="btn btn-primary">Voir plus</a>
+                            class="btn btn-primary">See more</a>
                         <a href="{{ route('administrator.client.edit', ['client' => $client->id]) }}"
-                            class="btn btn-warning">Modifier</a>
+                            class="btn btn-warning">Modify</a>
                     </td>
                 </tr>
             @endforeach

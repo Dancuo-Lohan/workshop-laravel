@@ -23,7 +23,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="job">Job :</label>
+        <label for="job">Fonction :</label>
         <input name="job" id="job" class="form-control" value="{{ old('job', $developer->job) }}">
         @error('job')
             <span class="text-danger">{{ $message }}</span>
@@ -63,9 +63,9 @@
     </div>
     <button class="btn btn-primary">
         @if ($developer->id)
-            Modifier
+            Update
         @else
-            Créer
+            Create
         @endif
     </button>
 </form>

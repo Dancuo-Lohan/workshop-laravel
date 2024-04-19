@@ -10,7 +10,7 @@
             </div>
             <div class="card w-75 mx-auto mt-4">
                 <div class="card-header">
-                    Role
+                    Fonction
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ $developer->role->name }}</p>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-footer text-muted">
-                Créé le {{ $developer->created_at->format('d/m/Y') }}
+                Created on {{ $developer->created_at->format('d/m/Y') }}
             </div>
         </div>
     </div>

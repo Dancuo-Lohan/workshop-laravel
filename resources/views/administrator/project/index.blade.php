@@ -15,7 +15,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Client</th>
-                <th>Chef de projet</th>
+                <th>Project manager</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,10 +37,9 @@
                     </td>
                     <td>
                         <a href="{{ route('administrator.project.show', ['project' => $project->slug]) }}"
-                            class="btn btn-primary">Voir
-                            plus</a>
+                            class="btn btn-primary">See more</a>
                         <a href="{{ route('administrator.project.edit', ['project' => $project->slug]) }}"
-                            class="btn btn-warning">Modifier</a>
+                            class="btn btn-warning">Update</a>
                     </td>
                 </tr>
             @endforeach

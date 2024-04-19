@@ -1,21 +1,21 @@
 <form action="" method="post" class="vstack gap-2">
     @csrf
     <div class="form-group">
-        <label for="name">Name :</label>
+        <label for="name">Name:</label>
         <input type="text" class="form-control" name="name" value="{{ old('name', $task->name) }}">
         @error('name')
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
     <div class="form-group">
-        <label for="slug">Slug :</label>
+        <label for="slug">Slug:</label>
         <input type="text" class="form-control" name="slug" value="{{ old('slug', $task->slug) }}">
         @error('slug')
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
     <div class="form-group">
-        <label for="project_id">Project :</label>
+        <label for="project_id">Project:</label>
         <select name="project_id" id="project_id" class="form-control">
             <option value="">-- Select a project --</option>
             @foreach ($projects as $project)
@@ -30,9 +30,8 @@
         $projectManagersIds = $task->projectManagers->pluck('id');
     @endphp
     <div class="form-group">
-        <label for="projectManagers">Manager :</label>
+        <label for="projectManagers">Manager:</label>
         <select name="projectManagers[]" id="projectManagers" class="form-control" multiple>
-            <option value="">-- Select managers --</option>
             @foreach ($projectManagers as $projectManager)
                 <option value="{{ $projectManager->id }}" @selected(old('projectManagers', $projectManagersIds->contains($projectManager->id)))>
                     {{ $projectManager->name }} {{ $projectManager->id }}
@@ -47,9 +46,8 @@
         $developersIds = $task->developers->pluck('id');
     @endphp
     <div class="form-group">
-        <label for="developers">Developer :</label>
+        <label for="developers">Developer:</label>
         <select name="developers[]" id="developers" class="form-control" multiple>
-            <option value="">-- Select developers --</option>
             @foreach ($developers as $developer)
                 <option value="{{ $developer->id }}" @selected(old('developers', $developersIds->contains($developer->id)))>
                     {{ $developer->name }} {{ $developer->id }}
@@ -61,7 +59,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="status_tag_id">Status :</label>
+        <label for="status_tag_id">Status:</label>
         <select name="status_tag_id" id="status_tag_id" class="form-control">
             <option value="">-- Select task status --</option>
             @foreach ($status_tags as $statut)
@@ -73,7 +71,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="task_tag_id">Tag :</label>
+        <label for="task_tag_id">Tag:</label>
         <select name="task_tag_id" id="task_tag_id" class="form-control">
             <option value="">-- Select task tag --</option>
             @foreach ($task_tags as $tag)
@@ -85,7 +83,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="description">Contenu :</label>
+        <label for="description">Description:</label>
         <textarea name="description" id="description" class="form-control">{{ old('description', $task->description) }}</textarea>
         @error('description')
             <span class="text-danger">{{ $message }}</span>

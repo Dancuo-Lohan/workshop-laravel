@@ -54,10 +54,9 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('administrator.task.show', ['task' => $task->slug]) }}" class="btn btn-primary">Voir
-                            plus</a>
+                        <a href="{{ route('administrator.task.show', ['task' => $task->slug]) }}" class="btn btn-primary">See more</a>
                         <a href="{{ route('administrator.task.edit', ['task' => $task->slug]) }}"
-                            class="btn btn-warning">Modifier</a>
+                            class="btn btn-warning">Update</a>
                     </td>
                 </tr>
             @endforeach

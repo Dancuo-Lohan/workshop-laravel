@@ -14,7 +14,7 @@
             <tr>
                 <th>First name</th>
                 <th>Last name</th>
-                <th>Job</th>
+                <th>Fonction</th>
                 <th>Tasks</th>
                 <th>Projects</th>
                 <th>Actions</th>
@@ -40,9 +40,9 @@
                     </td>
                     <td>
                         <a href="{{ route('administrator.developer.show', ['developer' => $developer->id]) }}"
-                            class="btn btn-primary">Voir plus</a>
+                            class="btn btn-primary">See more</a>
                         <a href="{{ route('administrator.developer.edit', ['developer' => $developer->id]) }}"
-                            class="btn btn-warning">Modifier</a>
+                            class="btn btn-warning">Update</a>
                     </td>
                 </tr>
             @endforeach

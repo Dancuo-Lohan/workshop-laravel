@@ -3,7 +3,7 @@
 @section('title', 'Projects list')
 
 @section('content')
-    <h1>Projects manager</h1>
+    <h1>Project managers</h1>
     <div style="padding: 2rem 0;">
         <a href="{{ route('administrator.projectManager.create') }}"
             class="btn btn-dark btn-white-text font-weight-bold">Create a project manager</a>
@@ -14,7 +14,7 @@
             <tr>
                 <th>First name</th>
                 <th>Last name</th>
-                <th>Job</th>
+                <th>Fonction</th>
                 <th>Projects</th>
                 <th>Tasks</th>
                 <th>Actions</th>
@@ -40,10 +40,9 @@
                     </td>
                     <td>
                         <a href="{{ route('administrator.projectManager.show', ['projectManager' => $projectManager->id]) }}"
-                            class="btn btn-primary">Voir
-                            plus</a>
+                            class="btn btn-primary">See more</a>
                         <a href="{{ route('administrator.projectManager.edit', ['projectManager' => $projectManager->id]) }}"
-                            class="btn btn-warning">Modifier</a>
+                            class="btn btn-warning">Update</a>
                     </td>
                 </tr>
             @endforeach

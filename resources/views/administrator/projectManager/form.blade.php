@@ -33,7 +33,7 @@
         $projectsIds = $projectManager->projects()->pluck('id');
     @endphp
     <div class="form-group">
-        <label for="projects">Projects :</label>
+        <label for="projects">Projects:</label>
         <select name="projects[]" id="projects" class="form-control" multiple>
             @foreach ($projects as $project)
                 <option value="{{ $project->id }}" @selected(old('projects', $projectsIds->contains($project->id)))>
@@ -49,7 +49,7 @@
         $tasksIds = $projectManager->tasks()->pluck('id');
     @endphp
     <div class="form-group">
-        <label for="tasks">Tasks :</label>
+        <label for="tasks">Tasks:</label>
         <select name="tasks[]" id="tasks" class="form-control" multiple>
             @foreach ($tasks as $task)
                 <option value="{{ $task->id }}" @selected(old('tasks', $tasksIds->contains($task->id)))>
@@ -63,9 +63,9 @@
     </div>
     <button class="btn btn-primary">
         @if ($projectManager->id)
-            Modifier
+            Update
         @else
-            Créer
+            Create
         @endif
     </button>
 </form>

@@ -29,7 +29,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <p><strong>Description : </strong>{!! $task->description !!}</p>
+                <p><strong>Description: </strong>{!! $task->description !!}</p>
             </div>
             <div class="card-footer text-muted">
                 Created on {{ $task->created_at->format('d/m/Y') }}
