@@ -208,7 +208,7 @@ class AdministratorController extends Controller
     public function client(): View
     {
         return view('administrator.client.index', [
-            'clients' => Client::all()
+            'clients' => Client::with('projects')->get()
         ]);
     }
 
