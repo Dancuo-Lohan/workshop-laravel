@@ -99,7 +99,7 @@ class AdministratorController extends Controller
     public function showProject(Project $project): RedirectResponse | View
     {
         return view('administrator.project.show', [
-            'project' => $project
+            'project' => $project::with(['projectManagers', 'developers'])->get()->first()
         ]);
     }
 
